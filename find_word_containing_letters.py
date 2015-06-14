@@ -28,6 +28,7 @@ with open("searchReadyWordsOfLength"+str(howManyLettersWanted)+".txt","r",encodi
 
 
 for word in wordsList:
+    word = word.replace("\n","")#words have a newline character as read from the file, so it has to be removed
     for fixedLetter,position in  fixedLetters.items():
         if not word[position-1]==fixedLetter:
             break
@@ -44,9 +45,9 @@ for word in wordsList:
                 tempWantedLetters = tempWantedLetters.replace(letter,"",1)#removing the found letter for the wanted letters, and continue searching for the rest letters
             else:
                 break
-
-        if matchingCounter >= howManyLetterToSearchFor:
-            matchedWordsList.setdefault(matchingCounter, []).append(word.replace("\n",""))#append the words in the dict and remove the newline character (for prettier prints)
+        else:#all the letters matched the wanted letters set and the loop finished normally
+            if matchingCounter >= howManyLetterToSearchFor:
+                matchedWordsList.setdefault(matchingCounter, []).append(word.replace("\n",""))#append the words in the dict and remove the newline character (for prettier prints)
 
 matchedWordsList = collections.OrderedDict(sorted(matchedWordsList.items(),reverse=True))#sort the dictionary by descending order
 pprint.pprint(matchedWordsList)
