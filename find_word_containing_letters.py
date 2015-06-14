@@ -18,7 +18,7 @@ fixedLetters = {
 ##### END OF CHANGEABLE VALUES
 
 
-howManyLetterToSearchFor = howManyLettersWanted- len(fixedLetters)
+howManyLetterToSearchFor = howManyLettersWanted - len(fixedLetters)
 
 
 matchedWordsList = {}
@@ -44,6 +44,7 @@ for word in wordsList:
                 tempWantedLetters = tempWantedLetters.replace(letter,"",1)#removing the found letter for the wanted letters, and continue searching for the rest letters
             else:
                 break
+
         if matchingCounter >= howManyLetterToSearchFor:
             matchedWordsList.setdefault(matchingCounter, []).append(word.replace("\n",""))#append the words in the dict and remove the newline character (for prettier prints)
 
@@ -51,6 +52,6 @@ matchedWordsList = collections.OrderedDict(sorted(matchedWordsList.items(),rever
 pprint.pprint(matchedWordsList)
 
 outputFilename = "matchedWordsOfLength" + str(howManyLettersWanted) + ".txt"
-print("Script Finished! Check the file: " outputFilename)
+print("Script Finished! Check the file: " + outputFilename)
 with open(outputFilename,'w', encoding='utf-8') as f:
     pprint.pprint(matchedWordsList,f)
