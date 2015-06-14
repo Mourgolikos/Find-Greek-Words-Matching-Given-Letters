@@ -44,7 +44,7 @@ with open("greek_words.txt","r",encoding="utf-8") as f:#read all the greek words
 
 for length in newWordLists.keys():#let's write the words in files according to their lengths (sizes)
     filename = outputFilePrefix+str(length)+outputFileExtension
-    with open(filename,'w+',encoding="utf-8") as f:
+    with open(filename,'w',encoding="utf-8") as f:
         print("Now writing the new Word List in the file: " + filename)
         f.writelines(newWordLists[length])
 
