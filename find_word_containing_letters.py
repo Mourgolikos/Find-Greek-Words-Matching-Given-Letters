@@ -7,13 +7,13 @@ import pprint
 
 
 ##### VALUES TO BE CHANGED
-wantedLetters = "ΚΛΕΡΙΑΤΑΟΠΤ"#order doesn't matter
-howManyLettersWanted = 8#the total number of letter the hidden word consists of
+wantedLetters = "ΘΡΞΕΣΡΑΖΦΟΠΩΗΜΑ"#order doesn't matter
+howManyLettersWanted = 11#the total number of letter the hidden word consists of
 
 fixedLetters = {
-#letter:position
-    "Ε":6,
-    "Α":8
+#position:letter
+    1:"Π",
+    3:"Ρ",
 }
 ##### END OF CHANGEABLE VALUES
 
@@ -29,7 +29,7 @@ with open("searchReadyWordsOfLength"+str(howManyLettersWanted)+".txt","r",encodi
 
 for word in wordsList:
     word = word.replace("\n","")#words have a newline character as read from the file, so it has to be removed
-    for fixedLetter,position in  fixedLetters.items():
+    for position,fixedLetter in  fixedLetters.items():
         if not word[position-1]==fixedLetter:
             break
     else:#all the fixed letters have been found so the loop ended normally.
@@ -47,12 +47,12 @@ for word in wordsList:
                 break
         else:#all the letters matched the wanted letters set and the loop finished normally
             if matchingCounter >= howManyLetterToSearchFor:
-                matchedWordsList.setdefault(matchingCounter, []).append(word.replace("\n",""))#append the words in the dict and remove the newline character (for prettier prints)
+                matchedWordsList.setdefault(matchingCounter, []).append(word)#append the words in the dict
 
 matchedWordsList = collections.OrderedDict(sorted(matchedWordsList.items(),reverse=True))#sort the dictionary by descending order
 pprint.pprint(matchedWordsList)
 
-outputFilename = "matchedWordsOfLength" + str(howManyLettersWanted) + ".txt"
-print("Script Finished! Check the file: " + outputFilename)
-with open(outputFilename,'w', encoding='utf-8') as f:
-    pprint.pprint(matchedWordsList,f)
+#outputFilename = "matchedWordsOfLength" + str(howManyLettersWanted) + ".txt"
+#print("Script Finished! Check the file: " + outputFilename)
+#with open(outputFilename,'w', encoding='utf-8') as f:
+#    pprint.pprint(matchedWordsList,f)
