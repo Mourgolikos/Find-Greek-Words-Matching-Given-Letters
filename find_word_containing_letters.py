@@ -23,7 +23,7 @@ howManyLetterToSearchFor = howManyLettersWanted - len(fixedLetters)
 
 matchedWordsList = {}
 
-with open("searchReadyWordsOfLength"+str(howManyLettersWanted)+".txt","r",encoding='utf-8') as f:
+with open(r'words\searchReadyWordsOfLength' + str(howManyLettersWanted) + '.txt', "r", encoding='utf-8') as f:
     wordsList = f.readlines()
 
 

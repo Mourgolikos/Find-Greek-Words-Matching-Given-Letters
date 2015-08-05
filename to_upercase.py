@@ -22,9 +22,9 @@ punctuation = {#In order to remove the Greek punctuation
     u"ΰ" :   u"υ",
 }
 
-
-outputFilePrefix = "searchReadyWordsOfLength"
-outputFileExtension = ".txt"
+outputFileFolder = 'words\\'
+outputFilePrefix = 'searchReadyWordsOfLength'
+outputFileExtension = '.txt'
 
 
 minWordLength = 1
@@ -43,7 +43,7 @@ with open("greek_words.txt","r",encoding="utf-8") as f:#read all the greek words
             newWordLists.setdefault(length-1, []).append(newWord.upper()+"\n")#append the new capitalized and non-punctuated word in the new list in order to be written to file later
 
 for length in newWordLists.keys():#let's write the words in files according to their lengths (sizes)
-    filename = outputFilePrefix+str(length)+outputFileExtension
+    filename = outputFileFolder + outputFilePrefix + str(length) + outputFileExtension
     with open(filename,'w',encoding="utf-8") as f:
         print("Now writing the new Word List in the file: " + filename)
         f.writelines(newWordLists[length])

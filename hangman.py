@@ -26,7 +26,7 @@ matchedWordsList = []
 lettersFrequency = {}
 
 
-fileName = "searchReadyWordsOfLength" + str(wordLength) + ".txt"
+fileName = r'words\searchReadyWordsOfLength' + str(wordLength) + '.txt'
 with open(fileName,"r",encoding='utf-8') as f:
     wordsList = f.readlines()
 

@@ -15,7 +15,7 @@ givenLetter = "ΑΒΓΟ"
 matchedWordsList = []
 
 
-fileName = "searchReadyWordsOfLength" + str(len(givenLetter)) + ".txt"
+fileName = r'words\searchReadyWordsOfLength' + str(len(givenLetter)) + ".txt"
 with open(fileName,"r",encoding='utf-8') as f:
     wordsList = f.readlines()
 
